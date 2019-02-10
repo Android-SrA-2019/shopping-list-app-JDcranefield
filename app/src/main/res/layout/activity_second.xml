@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondActivity"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnCheese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cheese"
+        android:onClick="btnClick"/>
+
+    <Button
+        android:id="@+id/btnRice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rice"
+        android:onClick="btnClick"/>
+
+    <Button
+        android:id="@+id/btnApples"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/apples"
+        android:onClick="btnClick"/>
+
+    <Button
+        android:id="@+id/btnBread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bread"
+        android:onClick="btnClick"/>
+
+    <Button
+        android:id="@+id/btnMilk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/milk"
+        android:onClick="btnClick"/>
+
+    <Button
+        android:id="@+id/btnMeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/meat"
+        android:onClick="btnClick"/>
+
+    <Button
+        android:id="@+id/btnTomato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tomato"
+        android:onClick="btnClick"/>
+
+    <Button
+        android:id="@+id/btnBanana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/banana"
+        android:onClick="btnClick"/>
+
+    <Button
+        android:id="@+id/btnBeans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/canned_beans"
+        android:onClick="btnClick"/>
+
+    <Button
+        android:id="@+id/btnPasta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pasta"
+        android:onClick="btnClick"/>
+
+</LinearLayout>

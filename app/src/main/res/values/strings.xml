@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Shopping List</string>
+    <string name="bread">Bread</string>
+    <string name="milk">Milk</string>
+    <string name="apples">Apples</string>
+    <string name="rice">Rice</string>
+    <string name="cheese">Cheese</string>
+    <string name="add_item">Add Item</string>
+    <string name="meat">Meat</string>
+    <string name="tomato">Tomato</string>
+    <string name="banana">Banana</string>
+    <string name="canned_beans">Canned Beans</string>
+    <string name="pasta">Pasta</string>
+    <string name="count_x">\u0020x\u0020</string>
 </resources>
