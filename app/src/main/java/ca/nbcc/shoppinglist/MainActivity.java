@@ -10,11 +10,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.nbcc.shoppinglist.models.GroceryListItem;
+
 public class MainActivity extends AppCompatActivity {
 
     public static final int TEXT_REQUEST = 1;
     private List<TextView> txtBoxes;
-    private Object[][] grocRecs;
+    private GroceryListItem[] grocRecs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         View layout = findViewById(R.id.info);
 
         txtBoxes = new ArrayList<>();
-        grocRecs = new Object[10][2];
+        grocRecs = new GroceryListItem[10];
 
         for(int i = 0; i < 10; i++){
             TextView txt = new TextView(this);
@@ -40,13 +42,13 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
 
-                grocRecs[i][0] = savedInstanceState.getString("txt" + (i + 1));
-                grocRecs[i][1] = savedInstanceState.getInt("count" + (i + 1));
+                grocRecs[i] = new GroceryListItem(
+                        savedInstanceState.getString("txt" + (i + 1)),
+                        savedInstanceState.getInt("count" + (i + 1))
+                );
 
-                if(!grocRecs[i][0].equals("")){
-                    String out = grocRecs[i][0] + getString(R.string.count_x) + grocRecs[i][1];
-                    txtBoxes.get(i).setText(out);
-                }
+                String out = grocRecs[i].getItemName() + getString(R.string.count_x) + grocRecs[i].getCount();
+                txtBoxes.get(i).setText(out);
             }
         }
     }
@@ -55,11 +57,11 @@ public class MainActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         for(int i = 0; i < 10; i++){
-            if(grocRecs[i][0] == null){
+            if(grocRecs[i] == null){
                 break;
             }
-            outState.putString("txt" + (i+1), (String)grocRecs[i][0]);
-            outState.putInt("count" + (i+1), (int)grocRecs[i][1]);
+            outState.putString("txt" + (i+1), grocRecs[i].getItemName());
+            outState.putInt("count" + (i+1), grocRecs[i].getCount());
         }
     }
 
@@ -70,16 +72,17 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 String reply = data.getStringExtra(SecondActivity.EXTRA_REPLY);
                 for(int i = 0; i < 10; i++){
-                    if(grocRecs[i][0] == null){
-                        grocRecs[i][0] = reply;
-                        grocRecs[i][1] = 1;
-                    }else if(grocRecs[i][0].equals(reply)){
-                        grocRecs[i][0] = reply;
-                        grocRecs[i][1] = (int)grocRecs[i][1] + 1;
+                    if(grocRecs[i] == null){
+                        grocRecs[i] = new GroceryListItem(
+                                reply,
+                                1
+                        );
+                    }else if(grocRecs[i].getItemName().equals(reply)){
+                        grocRecs[i].addOne();
                     }
 
-                    if(grocRecs[i][0].equals(reply)){
-                        String out = grocRecs[i][0] + getString(R.string.count_x) + grocRecs[i][1];
+                    if(grocRecs[i].getItemName().equals(reply)){
+                        String out = grocRecs[i].getItemName() + getString(R.string.count_x) + grocRecs[i].getCount();
                         txtBoxes.get(i).setText(out);
                         break;
                     }
